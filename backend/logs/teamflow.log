@@ -1,0 +1,397 @@
+2025-12-10 00:01:25 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/github/exchange-token
+2025-12-10 00:01:25 [http-nio-8081-exec-7] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-6] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-12-10 00:01:25 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/github/exchange-token
+2025-12-10 00:01:25 [http-nio-8081-exec-4] INFO  c.e.b.controller.AuthController - Exchanging GitHub authorization code
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:25 [http-nio-8081-exec-8] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG c.e.b.controller.AuthController - Lấy thông tin user: github_182085443
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:25 [http-nio-8081-exec-8] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing GET /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:25 [http-nio-8081-exec-8] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/auth/me
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG c.e.b.controller.AuthController - Lấy thông tin user: github_182085443
+2025-12-10 00:01:25 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:25 [http-nio-8081-exec-8] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:26 [http-nio-8081-exec-4] INFO  c.e.b.controller.AuthController - GitHub access token retrieved successfully
+2025-12-10 00:01:26 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/social-login
+2025-12-10 00:01:26 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/social-login
+2025-12-10 00:01:26 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:26 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:26 [http-nio-8081-exec-5] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/social-login
+2025-12-10 00:01:26 [http-nio-8081-exec-5] INFO  c.e.b.controller.AuthController - Request social login: github
+2025-12-10 00:01:26 [http-nio-8081-exec-5] INFO  c.e.b.service.impl.AuthServiceImpl - Social login với provider: github
+2025-12-10 00:01:27 [http-nio-8081-exec-5] INFO  c.e.b.s.impl.SocialAuthServiceImpl - GitHub user info: {login=huyvu0607, id=182085443, node_id=U_kgDOCtpnQw, avatar_url=https://avatars.githubusercontent.com/u/182085443?v=4, gravatar_id=, url=https://api.github.com/users/huyvu0607, html_url=https://github.com/huyvu0607, followers_url=https://api.github.com/users/huyvu0607/followers, following_url=https://api.github.com/users/huyvu0607/following{/other_user}, gists_url=https://api.github.com/users/huyvu0607/gists{/gist_id}, starred_url=https://api.github.com/users/huyvu0607/starred{/owner}{/repo}, subscriptions_url=https://api.github.com/users/huyvu0607/subscriptions, organizations_url=https://api.github.com/users/huyvu0607/orgs, repos_url=https://api.github.com/users/huyvu0607/repos, events_url=https://api.github.com/users/huyvu0607/events{/privacy}, received_events_url=https://api.github.com/users/huyvu0607/received_events, type=User, user_view_type=public, site_admin=false, name=null, company=null, blog=, location=null, email=null, hireable=null, bio=null, twitter_username=null, notification_email=null, public_repos=9, public_gists=0, followers=1, following=5, created_at=2024-09-19T09:20:59Z, updated_at=2025-12-09T10:10:29Z}
+2025-12-10 00:01:27 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.githubId = :githubId */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.github_id=?
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [182085443]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] INFO  c.e.b.service.impl.AuthServiceImpl - Social login thành công: github_182085443
+2025-12-10 00:01:27 [http-nio-8081-exec-5] DEBUG org.hibernate.SQL - 
+    /* update
+        
+    for
+        com.example.backend.model.User */update users 
+    set
+        avatar_url=?,
+        bio=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        full_name=?,
+        github_id=?,
+        google_id=?,
+        is_active=?,
+        last_login=?,
+        locked_until=?,
+        password_hash=?,
+        provider=?,
+        timezone=?,
+        updated_at=?,
+        username=? 
+    where
+        id=?
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [https://avatars.githubusercontent.com/u/182085443?v=4]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [null]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [vudh1092@ut.edu.vn]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BOOLEAN) <- [true]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:INTEGER) <- [0]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [User]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [182085443]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:VARCHAR) <- [null]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:BOOLEAN) <- [true]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:TIMESTAMP) <- [2025-12-10T00:01:27.731573600]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (11:TIMESTAMP) <- [null]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (12:VARCHAR) <- [$2a$10$DTjtEP5UKEpzVf2FyaoSaORZAeHsq/sheZ6rzIX1Yc63IN2UGUfPi]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (13:VARCHAR) <- [github]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (14:VARCHAR) <- [UTC]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (15:TIMESTAMP) <- [2025-12-10T00:01:27.731573]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (16:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:27 [http-nio-8081-exec-5] TRACE org.hibernate.orm.jdbc.bind - binding parameter (17:BIGINT) <- [14]
+2025-12-10 00:01:31 [http-nio-8081-exec-10] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/logout
+2025-12-10 00:01:31 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/logout
+2025-12-10 00:01:31 [http-nio-8081-exec-3] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:01:31 [http-nio-8081-exec-3] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [github_182085443]
+2025-12-10 00:01:31 [http-nio-8081-exec-3] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/logout
+2025-12-10 00:01:31 [http-nio-8081-exec-3] INFO  c.e.b.controller.AuthController - User đăng xuất
+2025-12-10 00:03:44 [http-nio-8081-exec-2] DEBUG o.s.security.web.FilterChainProxy - Securing OPTIONS /api/auth/google/exchange-token
+2025-12-10 00:03:44 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/google/exchange-token
+2025-12-10 00:03:44 [http-nio-8081-exec-8] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-12-10 00:03:44 [http-nio-8081-exec-8] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/google/exchange-token
+2025-12-10 00:03:44 [http-nio-8081-exec-8] INFO  c.e.b.controller.AuthController - Exchanging Google authorization code
+2025-12-10 00:03:46 [http-nio-8081-exec-8] INFO  c.e.b.controller.AuthController - Google access token retrieved successfully
+2025-12-10 00:03:46 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/social-login
+2025-12-10 00:03:46 [http-nio-8081-exec-4] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-12-10 00:03:46 [http-nio-8081-exec-4] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/social-login
+2025-12-10 00:03:46 [http-nio-8081-exec-4] INFO  c.e.b.controller.AuthController - Request social login: google
+2025-12-10 00:03:46 [http-nio-8081-exec-4] INFO  c.e.b.service.impl.AuthServiceImpl - Social login với provider: google
+2025-12-10 00:03:46 [http-nio-8081-exec-4] INFO  c.e.b.s.impl.SocialAuthServiceImpl - Google user info: {id=108729967916352052607, email=oopshuyvu@gmail.com, verified_email=true, name=Đồng Huy Vũ, given_name=Đồng Huy, family_name=Vũ, picture=https://lh3.googleusercontent.com/a/ACg8ocKzhQesegQolQA_mtU-waiSoMrxMMLgqb4JQ-J75_wg22LSKJwx=s96-c}
+2025-12-10 00:03:46 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.googleId = :googleId */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.google_id=?
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [108729967916352052607]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] INFO  c.e.b.service.impl.AuthServiceImpl - Social login thành công: huyvu0607
+2025-12-10 00:03:46 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL - 
+    /* update
+        
+    for
+        com.example.backend.model.User */update users 
+    set
+        avatar_url=?,
+        bio=?,
+        email=?,
+        email_verified=?,
+        failed_login_attempts=?,
+        full_name=?,
+        github_id=?,
+        google_id=?,
+        is_active=?,
+        last_login=?,
+        locked_until=?,
+        password_hash=?,
+        provider=?,
+        timezone=?,
+        updated_at=?,
+        username=? 
+    where
+        id=?
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [null]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (2:VARCHAR) <- [null]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (3:VARCHAR) <- [oopshuyvu@gmail.com]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (4:BOOLEAN) <- [false]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (5:INTEGER) <- [0]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (6:VARCHAR) <- [Huy vux]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (7:VARCHAR) <- [null]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (8:VARCHAR) <- [108729967916352052607]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (9:BOOLEAN) <- [true]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (10:TIMESTAMP) <- [2025-12-10T00:03:46.544723500]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (11:TIMESTAMP) <- [null]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (12:VARCHAR) <- [$2a$10$ZWpxJP5CUE.WIMiJfmM58eHcGY4S8pbXqzg5SbKn6SCP0Cy71I3ky]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (13:VARCHAR) <- [null]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (14:VARCHAR) <- [Asia/Ho_Chi_Minh]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (15:TIMESTAMP) <- [2025-12-10T00:03:46.548870]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (16:VARCHAR) <- [huyvu0607]
+2025-12-10 00:03:46 [http-nio-8081-exec-4] TRACE org.hibernate.orm.jdbc.bind - binding parameter (17:BIGINT) <- [10]
+2025-12-10 00:03:55 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/auth/logout
+2025-12-10 00:03:55 [http-nio-8081-exec-1] DEBUG org.hibernate.SQL - 
+    /* SELECT
+        u 
+    FROM
+        User u 
+    WHERE
+        u.username = :username */ select
+            u1_0.id,
+            u1_0.avatar_url,
+            u1_0.bio,
+            u1_0.created_at,
+            u1_0.email,
+            u1_0.email_verified,
+            u1_0.failed_login_attempts,
+            u1_0.full_name,
+            u1_0.github_id,
+            u1_0.google_id,
+            u1_0.is_active,
+            u1_0.last_login,
+            u1_0.locked_until,
+            u1_0.password_hash,
+            u1_0.provider,
+            u1_0.timezone,
+            u1_0.updated_at,
+            u1_0.username 
+        from
+            users u1_0 
+        where
+            u1_0.username=?
+2025-12-10 00:03:55 [http-nio-8081-exec-1] TRACE org.hibernate.orm.jdbc.bind - binding parameter (1:VARCHAR) <- [huyvu0607]
+2025-12-10 00:03:55 [http-nio-8081-exec-1] DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/auth/logout
+2025-12-10 00:03:55 [http-nio-8081-exec-1] INFO  c.e.b.controller.AuthController - User đăng xuất
+2025-12-10 00:05:56 [SpringApplicationShutdownHook] INFO  o.s.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-12-10 00:05:56 [tomcat-shutdown] INFO  o.s.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-12-10 00:05:56 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-10 00:05:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - TeamFlowHikariPool - Shutdown initiated...
+2025-12-10 00:05:56 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - TeamFlowHikariPool - Shutdown completed.
