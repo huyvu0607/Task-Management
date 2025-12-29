@@ -1,87 +1,187 @@
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogOut, CheckSquare } from 'lucide-react';
+import { dashboardApi } from '../api/dashboardApi';
+
+import StatCard from '../components/dashboard/StatCard';
+import TasksList from '../components/dashboard/TasksList';
+import ActivityFeed from '../components/dashboard/ActivityFeed';
+
+import {
+  CheckSquare,
+  Clock,
+  AlertTriangle,
+  TrendingUp
+} from 'lucide-react';
 
 const Dashboard = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(true);
+  const [dashboardData, setDashboardData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchDashboardData = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await dashboardApi.getPersonalDashboard();
+
+      if (response.success) {
+        setDashboardData(response.data);
+      } else {
+        setError(response.message || 'Failed to load dashboard data');
+      }
+    } catch (err) {
+      if (err.response?.status === 401) {
+        await logout();
+        navigate('/login');
+      } else {
+        setError(
+          err.response?.data?.message ||
+          err.message ||
+          'Failed to load dashboard'
+        );
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, [logout, navigate]);
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, [fetchDashboardData]);
 
   const handleLogout = async () => {
     await logout();
+    navigate('/login');
   };
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-black rounded-xl p-2">
-              <CheckSquare className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold">TaskFlow</span>
-          </div>
+  // Loading state
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-white"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">
+            Loading dashboard...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
-          <div className="flex items-center gap-4">
-            <div className="text-right">
-              <p className="font-semibold text-gray-900">{user?.fullName}</p>
-              <p className="text-sm text-gray-500">{user?.email}</p>
-            </div>
+  // Error state
+  if (error) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <div className="text-center max-w-md mx-auto p-6">
+          <AlertTriangle className="w-16 h-16 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            Oops! Something went wrong
+          </h2>
+          <p className="text-red-600 dark:text-red-400 mb-6">
+            {error}
+          </p>
+          <div className="flex gap-3 justify-center">
+            <button
+              onClick={fetchDashboardData}
+              className="px-6 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+            >
+              Try Again
+            </button>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+              className="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
             >
-              <LogOut className="w-5 h-5" />
-              Đăng xuất
+              Logout
             </button>
           </div>
         </div>
-      </header>
+      </div>
+    );
+  }
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-2xl shadow-sm p-12 text-center">
-          <div className="max-w-2xl mx-auto space-y-6">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full">
-              <CheckSquare className="w-10 h-10 text-green-600" />
-            </div>
-            
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 mb-3">
-                Chào mừng đến với TaskFlow! 🎉
-              </h1>
-              <p className="text-xl text-gray-600">
-                Xin chào <span className="font-semibold">{user?.fullName}</span>
-              </p>
-            </div>
+  // Extract data
+  const stats = dashboardData?.stats || {
+    totalTasks: 0,
+    inProgress: 0,
+    overdue: 0,
+    completed: 0
+  };
 
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-left">
-              <h3 className="font-semibold text-blue-900 mb-3">
-                Thông tin tài khoản
-              </h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-blue-700">Username:</span>
-                  <span className="font-medium text-blue-900">{user?.username}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-blue-700">Email:</span>
-                  <span className="font-medium text-blue-900">{user?.email}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-blue-700">User ID:</span>
-                  <span className="font-medium text-blue-900">{user?.userId}</span>
-                </div>
-              </div>
-            </div>
+  const myTasks = dashboardData?.myTasks || {
+    tasks: [],
+    pendingCount: 0,
+    completedCount: 0
+  };
 
-            <p className="text-gray-600">
-              Dashboard chức năng sẽ được phát triển ở các phần tiếp theo.
-              <br />
-              Hiện tại bạn đã đăng nhập thành công! ✅
-            </p>
-          </div>
+  const recentActivities = dashboardData?.recentActivities || [];
+
+  return (
+    <>
+      {/* Welcome Section */}
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+          Dashboard
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-1">
+          Welcome back, {user?.fullName || user?.username}! Here's what's happening.
+        </p>
+      </div>
+
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <StatCard
+          title="Total Tasks"
+          value={stats.totalTasks}
+          change={stats.changeFromLastMonth}
+          changeLabel="from last month"
+          icon={CheckSquare}
+          iconBgColor="bg-gray-100 dark:bg-gray-700"
+          iconColor="text-gray-900 dark:text-white"
+        />
+        <StatCard
+          title="In Progress"
+          value={stats.inProgress}
+          change={stats.dueToday}
+          changeLabel="due today"
+          icon={Clock}
+          iconBgColor="bg-yellow-100 dark:bg-yellow-900/30"
+          iconColor="text-yellow-600"
+        />
+        <StatCard
+          title="Overdue"
+          value={stats.overdue}
+          change={stats.overdueChangeFromLastWeek}
+          changeLabel="from last week"
+          icon={AlertTriangle}
+          iconBgColor="bg-red-100 dark:bg-red-900/30"
+          iconColor="text-red-600"
+        />
+        <StatCard
+          title="Completed"
+          value={stats.completed}
+          change={stats.completedThisWeek}
+          changeLabel="this week"
+          icon={TrendingUp}
+          iconBgColor="bg-green-100 dark:bg-green-900/30"
+          iconColor="text-green-600"
+        />
+      </div>
+
+      {/* Main Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <TasksList myTasks={myTasks} />
         </div>
-      </main>
-    </div>
+        <div className="lg:col-span-1">
+          <ActivityFeed recentActivities={recentActivities} />
+        </div>
+      </div>
+    </>
   );
 };
 

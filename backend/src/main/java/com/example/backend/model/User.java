@@ -62,6 +62,14 @@ public class User {
     @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
+    @Column(name = "phone_number", length = 20)
+    private String phoneNumber;
+
+    @Column(name = "department", length = 100)
+    private String department; // Phòng ban/Bộ phận
+
+    @Column(name = "job_title", length = 100)
+    private String jobTitle; // Chức danh công việc (nếu cần thêm)
     // ========== SOCIAL LOGIN FIELDS ==========
 
     @Column(name = "provider", length = 20)

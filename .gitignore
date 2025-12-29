@@ -1,0 +1,22 @@
+# ========== IntelliJ ==========
+.idea/
+*.iml
+
+# ========== Maven ==========
+target/
+
+# ========== Logs ==========
+logs/
+*.log
+
+# ========== Local Config ==========
+src/main/resources/application-local.properties
+src/main/resources/application-dev.properties
+src/main/resources/application-prod.properties
+
+# ========== Env ==========
+.env
+
+# ========== OS ==========
+.DS_Store
+Thumbs.db

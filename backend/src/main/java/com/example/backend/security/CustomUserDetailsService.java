@@ -3,15 +3,18 @@ package com.example.backend.security;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
+import java.time.LocalDateTime;
 
+/**
+ * Custom UserDetailsService
+ * Return UserDetailsImpl thay vì Spring's User
+ */
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
@@ -29,15 +32,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("Tài khoản đã bị khóa");
         }
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPasswordHash(),
-                user.getIsActive(),
-                true, // accountNonExpired
-                true, // credentialsNonExpired
-                user.getLockedUntil() == null || user.getLockedUntil().isBefore(java.time.LocalDateTime.now()), // accountNonLocked
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
-        );
+        // Kiểm tra tài khoản có bị lock không
+        if (user.getLockedUntil() != null && user.getLockedUntil().isAfter(LocalDateTime.now())) {
+            throw new UsernameNotFoundException("Tài khoản đang bị khóa đến: " + user.getLockedUntil());
+        }
+
+        // ⭐ Return UserDetailsImpl thay vì Spring's User
+        return UserDetailsImpl.build(user);
     }
 
     @Transactional
@@ -45,14 +46,17 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("User không tồn tại với id: " + id));
 
-        return new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
-                user.getPasswordHash(),
-                user.getIsActive(),
-                true,
-                true,
-                user.getLockedUntil() == null || user.getLockedUntil().isBefore(java.time.LocalDateTime.now()),
-                Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
-        );
+        // Kiểm tra tài khoản có active không
+        if (!user.getIsActive()) {
+            throw new UsernameNotFoundException("Tài khoản đã bị khóa");
+        }
+
+        // Kiểm tra tài khoản có bị lock không
+        if (user.getLockedUntil() != null && user.getLockedUntil().isAfter(LocalDateTime.now())) {
+            throw new UsernameNotFoundException("Tài khoản đang bị khóa đến: " + user.getLockedUntil());
+        }
+
+        // ⭐ Return UserDetailsImpl
+        return UserDetailsImpl.build(user);
     }
 }

@@ -1,9 +1,7 @@
 package com.example.backend.service;
 
-import com.example.backend.dto.auth.request.SocialLoginRequest;
+import com.example.backend.dto.auth.request.*;
 import com.example.backend.dto.auth.response.AuthResponse;
-import com.example.backend.dto.auth.request.LoginRequest;
-import com.example.backend.dto.auth.request.RegisterRequest;
 import com.example.backend.model.User;
 
 /**
@@ -46,4 +44,21 @@ public interface AuthService {
      * @throws RuntimeException nếu thông tin đăng nhập không hợp lệ hoặc tài khoản bị khóa
      */
     AuthResponse socialLogin(SocialLoginRequest request);
+
+    /**
+     * chỉnh sửa profile
+     *
+     * @param request thông tin profile
+     * @return thông tin profile được chỉnh sửa thành công
+     * @throws RuntimeException User không tồn tại
+     */
+    User updateProfile(String username, UpdateProfileRequest request);
+    /**
+     * Đổi mật khẩu khi đã ở trong profile
+     *
+     * @param request thông tin profile
+     * @return mật khẩu được chỉnh sửa thành công
+     * @throws RuntimeException nếu thông tin mật khẩu củ không đúng thì sẽ không đổi được
+     */
+    void changePassword(String username, ChangePasswordRequest request);
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonCreator;
 
 @Entity
 @Table(name = "team_members",
@@ -36,7 +37,7 @@ public class TeamMember {
     private User user;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false, length = 20)  // ✅ Tăng length lên 20
     private TeamRole role = TeamRole.MEMBER;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -48,7 +49,29 @@ public class TeamMember {
     @Column(name = "joined_at", nullable = false, updatable = false)
     private LocalDateTime joinedAt;
 
+    // ✅ EXPANDED ROLES
     public enum TeamRole {
-        ADMIN, MEMBER, VIEWER
+        ADMIN,      // Toàn quyền quản lý team
+        MANAGER,    // Quản lý tasks và members (không delete team)
+        DEVELOPER,  // Dev tasks
+        DESIGNER,   // Design tasks
+        QA,         // Testing và QA
+        MEMBER,     // Member thông thường
+        VIEWER;     // Chỉ xem
+
+        // ✅ Thêm JsonCreator để handle case-insensitive
+        @JsonCreator
+        public static TeamRole fromString(String value) {
+            if (value == null || value.trim().isEmpty()) {
+                return MEMBER; // default
+            }
+            try {
+                return TeamRole.valueOf(value.toUpperCase());
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException(
+                        "Invalid role: " + value + ". Valid roles are: ADMIN, MANAGER, DEVELOPER, DESIGNER, QA, MEMBER, VIEWER"
+                );
+            }
+        }
     }
 }

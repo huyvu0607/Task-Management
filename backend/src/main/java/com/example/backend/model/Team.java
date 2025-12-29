@@ -46,4 +46,7 @@ public class Team {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @Column(length = 7)
+    private String color;
 }

@@ -27,6 +27,9 @@ public class UserProfileResponse {
     private Boolean emailVerified;
     private LocalDateTime createdAt;
     private LocalDateTime lastLogin;
+    private String phoneNumber;
+    private String department;
+    private String jobTitle;
 
     /**
      * Chuyển đổi từ User entity sang UserProfileResponse
@@ -46,6 +49,9 @@ public class UserProfileResponse {
                 .emailVerified(user.getEmailVerified())
                 .createdAt(user.getCreatedAt())
                 .lastLogin(user.getLastLogin())
+                .phoneNumber(user.getPhoneNumber())
+                .department(user.getDepartment())
+                .jobTitle(user.getJobTitle())
                 .build();
     }
 }

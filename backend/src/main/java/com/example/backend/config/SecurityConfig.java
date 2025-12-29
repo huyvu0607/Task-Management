@@ -32,7 +32,7 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final CustomUserDetailsService customUserDetailsService;
-    private final CorsConfigurationSource corsConfigurationSource; // Inject từ CorsConfig
+    private final CorsConfigurationSource corsConfigurationSource;
 
     /**
      * Cấu hình Security Filter Chain
@@ -48,22 +48,24 @@ public class SecurityConfig {
 
                 // Cấu hình authorization
                 .authorizeHttpRequests(auth -> auth
-                        // Cho phép truy cập các endpoint public (không cần token)
+                        // ========== PUBLIC ENDPOINTS (Không cần token) ==========
                         .requestMatchers(
-                                "/api/auth/test",
-                                "/api/auth/register",
-                                "/api/auth/login",
-                                "/api/auth/social-login",
-                                "/api/auth/google/**",
-                                "/api/auth/github/**"
+                                "/api/auth/**"
                         ).permitAll()
 
-                        // Cho phép Swagger/OpenAPI docs (nếu có)
+                        // Swagger/OpenAPI docs
                         .requestMatchers(
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html"
                         ).permitAll()
+
+                        // ========== PROTECTED ENDPOINTS (Cần authentication) ==========
+                        // Dashboard endpoints - chỉ authenticated users mới access được
+                        .requestMatchers("/api/dashboard/**").authenticated()
+
+                        // User profile endpoints
+                        .requestMatchers("/api/auth/me", "/api/auth/logout", "/api/auth/validate").authenticated()
 
                         // Tất cả các request khác đều cần authentication
                         .anyRequest().authenticated()
