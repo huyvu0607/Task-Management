@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lời mời tham gia team</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .content {
+            padding: 40px;
+            color: #333333;
+        }
+        .icon-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .icon {
+            width: 64px;
+            height: 64px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .greeting {
+            font-size: 16px;
+            color: #666666;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .invitation-info {
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            color: #666666;
+            font-size: 14px;
+        }
+        .info-value {
+            color: #000000;
+            font-weight: 500;
+            font-size: 14px;
+            text-align: right;
+        }
+        .team-name {
+            color: #000000;
+            font-weight: 600;
+        }
+        .role-badge {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .message-box {
+            background-color: #fffbeb;
+            border-left: 3px solid #fbbf24;
+            padding: 16px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .message-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 8px;
+        }
+        .message-content {
+            font-size: 14px;
+            color: #78350f;
+            font-style: italic;
+            line-height: 1.5;
+        }
+        .description {
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+            margin: 25px 0;
+            line-height: 1.6;
+        }
+        .button-container {
+            text-align: center;
+            margin: 35px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 14px 40px;
+            background-color: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 16px;
+            margin: 0 8px;
+            transition: background-color 0.2s;
+        }
+        .button:hover {
+            background-color: #333333;
+        }
+        .button-secondary {
+            background-color: #ffffff;
+            color: #000000;
+            border: 2px solid #e5e5e5;
+        }
+        .button-secondary:hover {
+            background-color: #f5f5f5;
+            border-color: #d5d5d5;
+        }
+        .manual-link {
+            background-color: #f5f5f5;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        .manual-link p {
+            font-size: 13px;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+        .link-text {
+            font-size: 12px;
+            color: #0066cc;
+            word-break: break-all;
+            font-family: monospace;
+        }
+        .expiry-notice {
+            text-align: center;
+            color: #666666;
+            font-size: 13px;
+            margin: 20px 0;
+        }
+        .footer {
+            background-color: #f9f9f9;
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+        }
+        .footer-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: #000000;
+            margin-bottom: 15px;
+        }
+        .footer-links {
+            margin: 15px 0;
+        }
+        .footer-links a {
+            color: #666666;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 13px;
+        }
+        .footer-links a:hover {
+            color: #000000;
+        }
+        .footer-note {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 15px;
+        }
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 30px 20px;
+            }
+            .button {
+                display: block;
+                margin: 10px 0;
+            }
+            .info-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .info-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>TaskFlow</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Icon -->
+        <div class="icon-container">
+            <div class="icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="#000000"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <h2 class="title">Lời mời tham gia team</h2>
+
+        <!-- Greeting -->
+        <p class="greeting" th:text="'Xin chào ' + ${invitedUserName} + ', bạn đã được mời tham gia team.'">
+            Xin chào Nguyễn Văn A, bạn đã được mời tham gia team.
+        </p>
+
+        <!-- Invitation Info -->
+        <div class="invitation-info">
+            <div class="info-row">
+                <span class="info-label">Team:</span>
+                <span class="info-value team-name" th:text="${teamName}">Development Team</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Vai trò:</span>
+                <span class="info-value">
+                        <span class="role-badge" th:text="${role}">DEVELOPER</span>
+                    </span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Người mời:</span>
+                <span class="info-value" th:text="${inviterName}">Trần Văn B</span>
+            </div>
+        </div>
+
+        <!-- Personal Message (if exists) -->
+        <div class="message-box" th:if="${hasMessage}">
+            <div class="message-label">Lời nhắn từ <span th:text="${inviterName}">người mời</span>:</div>
+            <div class="message-content" th:text="${message}">
+                "Chào mừng bạn đến với team! Chúng tôi rất mong được làm việc cùng bạn."
+            </div>
+        </div>
+
+        <!-- Description -->
+        <p class="description">
+            Để hoàn tất quá trình tham gia team, vui lòng nhấn vào nút dưới đây để xác nhận.
+        </p>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <a th:href="${acceptLink}" href="#" class="button">Xác Nhận Lời mời</a>
+        </div>
+
+        <!-- Expiry Notice -->
+        <p class="expiry-notice">
+            Liên kết này sẽ hết hạn sau <strong th:text="${expiryDays}">7</strong> ngày.
+        </p>
+
+        <!-- Manual Link Section -->
+        <div class="manual-link">
+            <p>Nếu nút không hoạt động, sao chép và dán liên kết sau vào trình duyệt:</p>
+            <div class="link-text" th:text="${acceptLink}">
+                https://yourapp.com/team-invitation/accept?token=abc123xyz
+            </div>
+        </div>
+
+        <p class="description" style="margin-top: 30px;">
+            Nếu bạn không yêu cầu email này, vui lòng bỏ qua.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="footer-title">TaskFlow</div>
+        <div class="footer-links">
+            <a href="#">Trợ giúp</a>
+            <a href="#">Liên hệ</a>
+            <a href="#">Điều khoản</a>
+        </div>
+        <div class="footer-note">
+            © <span th:text="${year}">2024</span> TaskFlow. All rights reserved.
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 font-sans antialiased;
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* Tự động apply dark mode cho tất cả text */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  p {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  label {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  a {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  /* Input fields tự động dark mode */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    @apply bg-white dark:bg-gray-800;
+    @apply text-gray-900 dark:text-white;
+    @apply border-gray-300 dark:border-gray-600;
+    @apply placeholder-gray-400 dark:placeholder-gray-500;
+  }
+
+  /* Checkbox tự động dark mode */
+  input[type="checkbox"] {
+    @apply border-gray-300 dark:border-gray-600;
+    @apply bg-white dark:bg-gray-800;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg;
+    @apply bg-white dark:bg-gray-800;
+    @apply text-gray-900 dark:text-white;
+    @apply placeholder-gray-400 dark:placeholder-gray-500;
+    @apply focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white focus:border-transparent transition-all;
+  }
+  
+  .btn-primary {
+    @apply w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-lg font-medium;
+    @apply hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors;
+    @apply flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply w-full border border-gray-300 dark:border-gray-600 py-3 rounded-lg font-medium;
+    @apply hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors;
+    @apply flex items-center justify-center gap-2;
+    @apply text-gray-900 dark:text-white;
+  }
+  
+  .link-primary {
+    @apply text-black dark:text-white font-semibold hover:underline;
+  }
+  
+  .auth-card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-sm p-8 w-full max-w-md;
+  }
+}/* Thêm vào file src/index.css hoặc src/App.css */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out;
+}
+
+.animate-slideDown {
+  animation: slideDown 0.2s ease-out;
+}
